@@ -5,6 +5,6 @@
   tasks:
 
   - name: Stop easyTravel processses
-    command: sudo kill $(ps aux | grep 'easytravel.business' | awk '{print $2}')
+    command: sudo sh /opt/easytravel/easytravel-2.0.0-x64/resources/killbackend.sh
     ignore_errors: yes
     delegate_to: easytravel-btic
