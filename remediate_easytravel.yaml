@@ -3,7 +3,22 @@
   become: no
 
   tasks:
-  
+ 
+  - name: 'push comment to dynatrace'
+    uri:
+      url: "{{ dynatrace_environment_url }}{{ dt_comments_api }}{{ dt_pid }}/comments"
+      method: POST
+      validate_certs: no
+      use_proxy: no
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Api-token {{ dynatrace_api_token }}"
+      body:
+        comment: 'ServiceNow Incident created -- INC0199991'
+        user: '{{ dt_comment_user }}'
+        context: 'ServiceNow'
+      body_format: json
+ 
   - name: 'push comment to dynatrace'
     uri:
       url: "{{ dynatrace_environment_url }}{{ dt_comments_api }}{{ dt_pid }}/comments"
