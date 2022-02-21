@@ -4,7 +4,7 @@
 
   tasks:
 
- - name: Stop easyTravel processses
+  - name: Stop easyTravel processses
     command: kill $(ps aux | grep 'easytravel.business' | awk '{print $2}')
     ignore_errors: yes
     delegate_to: easytravel-btic
