@@ -18,7 +18,6 @@
         user: '{{ dt_comment_user }}'
         context: '{{ dt_comment_context }}'
       body_format: json
-    when: result.status == 200
 
   - name: Stop easyTravel processses
     command: sudo /usr/bin/pkill -f 'java'
