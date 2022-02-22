@@ -4,10 +4,25 @@
 
   tasks:
   
+
+  - name: Log lines to MS Teams
+    uri:
+     url: "https://atos365.webhook.office.com/webhookb2/4385c4af-d5df-4ad1-98e0-728678a902f0@33440fc6-b7c7-412c-bb73-0e70b0198d5a/IncomingWebhook/89d03b41e915411ca88d3b1c35a46468/95c5fa50-73c1-49fc-95f8-2d43d627c22f"
+     body: '{"title":"Ansible","text":"<b>Incident INC0199991 automatically mitigated.</b><br>All services are running properly. <br><i> Navigate to https://easytravel1.demo.dpm.atos.net/</i> ","themeColor":"EA4300"}'
+     body_format: json
+     method: POST
+
+  - name: Log lines to MS Teams
+    uri:
+     url: "https://atos365.webhook.office.com/webhookb2/4385c4af-d5df-4ad1-98e0-728678a902f0@33440fc6-b7c7-412c-bb73-0e70b0198d5a/IncomingWebhook/89d03b41e915411ca88d3b1c35a46468/95c5fa50-73c1-49fc-95f8-2d43d627c22f"
+     body: '{"title":"Ansible","text":"<b>AI root cause found</b><br><i>Automatic resolution initialized</i>","themeColor":"EA4300"}'
+     body_format: json
+     method: POST
+     
   - name: Log lines to MS Teams
     uri:
      url: "https://atos365.webhook.office.com/webhookb2/4385c4af-d5df-4ad1-98e0-728678a902f0@33440fc6-b7c7-412c-bb73-0e70b0198d5a/IncomingWebhook/e121e4ee2aec42339067501a09a5c33b/95c5fa50-73c1-49fc-95f8-2d43d627c22f"
-     body: '{"title":"Incident Created","text":"INC0199991<br>Revenue of the EasyTravel website dropped to <b>0%<b>.","themeColor":"EA4300"}'
+     body: '{"title":"Incident Created","text":"INC0199991<br>Revenue of the EasyTravel website dropped to <b>0%<b> due to technical issues.<br><i>We are currently working on a solution..</i>","themeColor":"EA4300"}'
      body_format: json
      method: POST
     
@@ -40,6 +55,13 @@
         user: '{{ dt_comment_user }}'
         context: '{{ dt_comment_context }}'
       body_format: json
+
+  - name: Log lines to MS Teams
+    uri:
+     url: "https://atos365.webhook.office.com/webhookb2/4385c4af-d5df-4ad1-98e0-728678a902f0@33440fc6-b7c7-412c-bb73-0e70b0198d5a/IncomingWebhook/89d03b41e915411ca88d3b1c35a46468/95c5fa50-73c1-49fc-95f8-2d43d627c22f"
+     body: '{"title":"Ansible","text":"<b>AI root cause found</b><br><i>Automatic resolution initialized</i>","themeColor":"EA4300"}'
+     body_format: json
+     method: POST
 
   - name: Stop easyTravel processses
     command: sudo /usr/bin/pkill -f 'java'
@@ -93,6 +115,13 @@
         context: '{{ dt_comment_context }}'
       body_format: json
     when: result.status == 200
+    
+  - name: Log lines to MS Teams
+    uri:
+     url: "https://atos365.webhook.office.com/webhookb2/4385c4af-d5df-4ad1-98e0-728678a902f0@33440fc6-b7c7-412c-bb73-0e70b0198d5a/IncomingWebhook/89d03b41e915411ca88d3b1c35a46468/95c5fa50-73c1-49fc-95f8-2d43d627c22f"
+     body: '{"title":"Ansible","text":"<b>Incident INC0199991 automatically mitigated.</b><br>All services are running properly. <br><i> Navigate to https://easytravel1.demo.dpm.atos.net/</i> ","themeColor":"EA4300"}'
+     body_format: json
+     method: POST
 
   - name: 'push comment to dynatrace'
     uri:
