@@ -81,12 +81,12 @@
       
   - name: "wait for easytravel portal to come up"
     uri:
-      url: "http://localhost:9080/"
+      url: "http://localhost:443/"
       status_code: 200
     register: result
     until: result.status == 200
     retries: 15
-    delay: 10
+    delay: 3
     delegate_to: easytravel-btic
 
   - name: 'push comment to dynatrace'
