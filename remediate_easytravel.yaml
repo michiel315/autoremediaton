@@ -7,7 +7,7 @@
   - name: Log lines to MS Teams
     uri:
      url: "https://atos365.webhook.office.com/webhookb2/4385c4af-d5df-4ad1-98e0-728678a902f0@33440fc6-b7c7-412c-bb73-0e70b0198d5a/IncomingWebhook/e121e4ee2aec42339067501a09a5c33b/95c5fa50-73c1-49fc-95f8-2d43d627c22f"
-     body: '{"title":"Incident Created","text":"INC0199991<br>Revenue of the EasyTravel website dropped to <b>0%<b> due to technical issues.<br><i>We are currently working on a solution..</i>","themeColor":"EA4300"}'
+     body: '{"title":"Incident Created","text":"INC0199991<br>We noticed an issue on the webshop, customers are not able to finalize purchase. Revenue on shop website dropped to <b>0%<b>.<br>We are currently working on a solution, and will update shortly...","themeColor":"EA4300"}'
      body_format: json
      method: POST
     
@@ -25,6 +25,10 @@
         user: '{{ dt_comment_user }}'
         context: 'ServiceNow'
       body_format: json
+
+  - name: Sleep for 30 seconds
+    wait_for:
+      timeout: 30
  
   - name: 'push comment to dynatrace'
     uri:
@@ -44,7 +48,7 @@
   - name: Log lines to MS Teams
     uri:
      url: "https://atos365.webhook.office.com/webhookb2/4385c4af-d5df-4ad1-98e0-728678a902f0@33440fc6-b7c7-412c-bb73-0e70b0198d5a/IncomingWebhook/89d03b41e915411ca88d3b1c35a46468/95c5fa50-73c1-49fc-95f8-2d43d627c22f"
-     body: '{"title":"AI root cause found","text":"Automatic resolution initialized<b>We hope to have this restored shortly..","themeColor":"EA4300"}'
+     body: '{"title":"AI engine found the root cause on the back-end of the webshop","text":"To mitigate the issue, an automatic resolution is initialized. <br>We hope to have this restored shortly, and will update shortly...","themeColor":"EA4300"}'
      body_format: json
      method: POST
 
@@ -104,7 +108,7 @@
   - name: Log lines to MS Teams
     uri:
      url: "https://atos365.webhook.office.com/webhookb2/4385c4af-d5df-4ad1-98e0-728678a902f0@33440fc6-b7c7-412c-bb73-0e70b0198d5a/IncomingWebhook/89d03b41e915411ca88d3b1c35a46468/95c5fa50-73c1-49fc-95f8-2d43d627c22f"
-     body: '{"title":"INC0199991 automatically mitigated.","text":"All services are running properly. <br><i> Navigate to https://easytravel1.demo.dpm.atos.net/</i> ","themeColor":"EA4300"}'
+     body: '{"title":"INC0199991 automatically mitigated.","text":"All services on the webshop are restored are running properly.<br><br>Incident is closed automatically.","themeColor":"EA4300"}'
      body_format: json
      method: POST
 
